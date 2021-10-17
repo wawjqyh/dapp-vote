@@ -86,7 +86,7 @@ export default {
     },
 
     async handleVote() {
-      if (!this.selected) {
+      if (typeof this.selected !== 'number') {
         this.$message({
           message: '请选择',
           type: 'error'
