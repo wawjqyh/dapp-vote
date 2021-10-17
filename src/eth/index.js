@@ -3,15 +3,6 @@ import json from './Vote.json';
 import config from '../config';
 
 class Eth {
-  init(privateKey) {
-    let wallet = this.initWallet(privateKey);
-    let provider = this.initProvider();
-
-    this.wallet = wallet.connect(provider);
-    this.provider = provider;
-    this.contract = this.initContract(this.wallet, this.provider);
-  }
-
   initWallet(privateKey) {
     let wallet = new ethers.Wallet(privateKey);
     return wallet;
@@ -35,13 +26,15 @@ class Eth {
 
     return contractWithSigner;
   }
-}
 
-// let balance = await activeWallet.getBalance();
-// let val = await contractWithSigner.votes();
-// {value: utils.parseEther('1.0')}
-// let cba = await contractWithSigner.getBalance();
-// console.log(balance.toString() / 1000000000000000000);
-// console.log('vote:' + cba / 1000000000000000000);
+  init(privateKey) {
+    let wallet = this.initWallet(privateKey);
+    let provider = this.initProvider();
+
+    this.wallet = wallet.connect(provider);
+    this.provider = provider;
+    this.contract = this.initContract(this.wallet, this.provider);
+  }
+}
 
 export default Eth;

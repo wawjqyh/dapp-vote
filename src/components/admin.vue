@@ -20,7 +20,7 @@ export default {
 
       try {
         let call = await this.$eth.contract.endVote();
-        await call.wait();
+        await call.wait(1);
 
         this.$message({
           message: '操作成功',

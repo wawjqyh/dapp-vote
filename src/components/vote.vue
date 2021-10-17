@@ -105,7 +105,7 @@ export default {
 
       try {
         let call = await this.$eth.contract.vote(this.selected, { value: utils.parseEther('0.1') });
-        await call.wait();
+        await call.wait(1);
 
         this.$message({
           message: '投票成功！',
